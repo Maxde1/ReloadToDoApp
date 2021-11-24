@@ -1,0 +1,20 @@
+1. Item can be created
+2. Item can be deleted
+3. Item can be updated
+4. Item consist of title, date_created/updated, priority, content
+
+Main screen
+    list of ToDo items shown
+        item shows title, priority, date_create.
+        item shows three dots menu.
+            edit item shows.
+            remove item shows.
+        item shows complete button.
+    Add new todo button
+Add/edit item screen
+    input for title
+    input for content
+    dropdown for priority
+    save/cancel button
+
+
