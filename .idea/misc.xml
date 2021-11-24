@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mdenyse/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.1265625" />
+        <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/drawable/spinner_background.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/layout/acticity_item_of_list.xml" value="0.264" />
+        <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/layout/activity_add_new_task.xml" value="0.264" />
         <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/layout/activity_main.xml" value="0.16145833333333334" />
       </map>
     </option>

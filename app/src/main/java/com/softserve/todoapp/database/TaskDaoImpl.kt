@@ -2,8 +2,10 @@ package com.softserve.todoapp.database
 
 import com.softserve.todoapp.model.Task
 
-class TaskDtoImpl: TaskDao {
-    var listOfTasks: MutableList<Task> = mutableListOf()
+class TaskDaoImpl: TaskDao {
+    companion object{
+        var listOfTasks: MutableList<Task> = mutableListOf()
+    }
 
     override fun getItems(): List<Task> {
         return listOfTasks
