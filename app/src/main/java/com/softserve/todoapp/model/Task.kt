@@ -6,4 +6,5 @@ data class Task(
     var dateCreation: String,
     var priority: Int = 1
 ) {
+
 }

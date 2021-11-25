@@ -3,6 +3,8 @@ package com.softserve.todoapp.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -21,30 +23,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recycler = findViewById(R.id.listOfTasks)
-        recycler.layoutManager = LinearLayoutManager(this)
-        adapter = TaskListAdapter(createData())
-        recycler.adapter = adapter
-        createButton = findViewById(R.id.floatingActionButton)
 
+        setUpAdapter()
+
+        //Create new task
+        createButton = findViewById(R.id.floatingActionButton)
         createButton.setOnClickListener{
             val intent= Intent(this, NewTaskActivity::class.java)
             startActivity(intent)
         }
 
+
+    }
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
     }
 
-    fun createData(): List<Task>{
-        return listOf(
-            Task("sometext", "todo", "121414"),
-            Task("sometext", "todo", "121414"),
-            Task("sometext", "todo", "121414"),
-            Task("sometext", "todo", "121414"),
-            Task("sometext", "todo", "121414"),
-            Task("sometext", "todo", "121414"),
-            Task("sometext", "todo", "121414"),
-            Task("sometext", "todo", "121414")
-        )
+
+    private fun setUpAdapter(){
+        recycler = findViewById(R.id.listOfTasks)
+        recycler.layoutManager = LinearLayoutManager(this)
+        adapter = TaskListAdapter(database.getItems())
+        recycler.adapter = adapter
+
     }
+
 
 }
