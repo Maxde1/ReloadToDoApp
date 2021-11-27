@@ -16,11 +16,10 @@ import com.softserve.todoapp.model.Task
 import java.util.*
 import android.widget.Toast
 
-
 class NewTaskActivity : AppCompatActivity() {
     private val taskDaoManager = TaskDaoManager()
-
     lateinit var addButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_task)
@@ -35,48 +34,39 @@ class NewTaskActivity : AppCompatActivity() {
         addButton.setOnClickListener {
             addNewTask()
         }
-
     }
 
-
     private fun createSpinner(spinner: Spinner) {
-        ArrayAdapter.createFromResource(
+        val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.priority_array,
             android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
     }
-    //This shouldn't do this class
-
 
     private fun addNewTask() {
         val title: TextInputEditText = findViewById(R.id.title_input)
         val taskContent: TextInputEditText = findViewById(R.id.task_content_input)
         val priority: Spinner = findViewById(R.id.priority_spinner)
         //check if fields aren't empty
-        if (taskDaoManager.isValidTask(
-                title.text.toString(),
-                taskContent.text.toString()
-            )
-        )
-        {
-            taskDaoManager.addTask(
-                title.text.toString(),
-                taskContent.text.toString(),
-                priority.selectedItem.toString(),
-                Date()
-            )
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        } else {
+        val valid = taskDaoManager.isValidTask(
+            title.text.toString(),
+            taskContent.text.toString())
+
+        if (!valid) {
             val myToast = Toast.makeText(this, "Pleas fill all required fields", Toast.LENGTH_LONG)
             myToast.show()
+            return
         }
-
-
+        taskDaoManager.addTask(
+            title.text.toString(),
+            taskContent.text.toString(),
+            priority.selectedItem as String,
+            Date()
+        )
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
-
 }

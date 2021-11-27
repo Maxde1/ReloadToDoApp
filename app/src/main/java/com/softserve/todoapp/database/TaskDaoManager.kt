@@ -8,13 +8,14 @@ import java.util.*
 
 class TaskDaoManager {
     private val  taskDao = TaskDaoImpl()
-
-
-
+    fun removeTask(task: Task){
+        taskDao.delete(task)
+    }
+    fun getItems(): List<Task>{
+        return taskDao.getItems()
+    }
     fun addTask(title: String, taskContent: String, priority: String, currentDate: Date){
-        Log.e("OOO", createTask(title, taskContent, priority, currentDate).toString())
         taskDao.insertTask(createTask(title, taskContent, priority, currentDate))
-        Log.e("AAAA", taskDao.getItems().toString())
     }
     private fun formatDate(currentDate: Date): String{
         val formatter = SimpleDateFormat("MMM dd yyyy")
@@ -24,7 +25,7 @@ class TaskDaoManager {
         return Task(
             title = title,
             task = taskContent,
-            priority =getPriority(priority),
+            priority = getPriority(priority),
             dateCreation = formatDate(currentDate)
         )
     }
