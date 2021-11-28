@@ -15,24 +15,28 @@ import com.softserve.todoapp.database.TaskDaoManager
 import com.softserve.todoapp.model.Task
 import java.util.*
 import android.widget.Toast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class NewTaskActivity : AppCompatActivity() {
     private val taskDaoManager = TaskDaoManager()
-    lateinit var addButton: Button
+    lateinit var addButton: FloatingActionButton
+    lateinit var cancelButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_task)
-
-
         // Create spinner
         val spinner: Spinner = findViewById(R.id.priority_spinner)
         createSpinner(spinner)
-
         //add button listener
         addButton = findViewById(R.id.add_button)
         addButton.setOnClickListener {
             addNewTask()
+        }
+        //cancel button listener
+        cancelButton = findViewById(R.id.cancel_button_new_task)
+        cancelButton.setOnClickListener{
+            cancelCreateTask()
         }
     }
 
@@ -66,6 +70,10 @@ class NewTaskActivity : AppCompatActivity() {
             priority.selectedItem as String,
             Date()
         )
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+    fun cancelCreateTask(){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
