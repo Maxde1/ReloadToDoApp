@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/create_new_task"
+        android:text="@string/edit_task"
         android:textAlignment="center"
         android:textSize="12pt"
         android:textStyle="bold"
@@ -32,7 +32,7 @@
         app:layout_constraintRight_toRightOf="parent"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/title_input"
+            android:id="@+id/title_input_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="25"
@@ -54,10 +54,9 @@
         app:layout_constraintRight_toRightOf="parent"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/task_content_input"
+            android:id="@+id/task_content_input_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -73,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@id/task_content_layout"
         app:layout_constraintLeft_toLeftOf="parent"/>
     <Spinner
-        android:id="@+id/priority_spinner"
+        android:id="@+id/priority_spinner_edit"
         android:layout_width="wrap_content"
         app:layout_constraintWidth_min="150dp"
         android:spinnerMode="dropdown"
@@ -87,18 +86,19 @@
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_button"
+        android:id="@+id/save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:contentDescription="@string/create_new_task_button"
-        android:src="@android:drawable/ic_input_add"
+        android:src="@drawable/ic_done_24"
         app:maxImageSize="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@android:color/white" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/cancel_button_new_task"
+        android:id="@+id/cancel_button_edit_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"

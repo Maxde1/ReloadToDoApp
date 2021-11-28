@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/mdenyse/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.1265625" />
+        <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/drawable/blue_outline.xml" value="0.2703125" />
+        <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2351851851851852" />
         <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/drawable/spinner_background.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/layout/acticity_item_of_list.xml" value="0.264" />
         <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/layout/activity_add_new_task.xml" value="0.264" />
         <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/layout/activity_main.xml" value="0.16145833333333334" />
+        <entry key="..\:/Users/mdenyse/Documents/Project/app/src/main/res/layout/activoty_edit_task.xml" value="0.23505434782608695" />
       </map>
     </option>
   </component>

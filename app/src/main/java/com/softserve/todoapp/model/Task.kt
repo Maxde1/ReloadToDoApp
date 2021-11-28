@@ -4,6 +4,7 @@ data class Task(
     var title: String,
     var task: String,
     var dateCreation: String,
-    var priority: Int = 1
+    var priority: Int = 0
 ) {
+
 }
