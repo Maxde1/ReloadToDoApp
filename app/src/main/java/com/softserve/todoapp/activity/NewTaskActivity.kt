@@ -58,7 +58,6 @@ class NewTaskActivity : AppCompatActivity() {
         val valid = taskDaoManager.isValidTask(
             title.text.toString(),
             taskContent.text.toString())
-
         if (!valid) {
             val myToast = Toast.makeText(this, "Pleas fill all required fields", Toast.LENGTH_LONG)
             myToast.show()
@@ -73,7 +72,8 @@ class NewTaskActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-    fun cancelCreateTask(){
+
+    private fun cancelCreateTask(){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
