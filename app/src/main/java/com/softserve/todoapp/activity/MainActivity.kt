@@ -41,15 +41,11 @@ class MainActivity : AppCompatActivity(), OnClickTaskAdapter {
             startActivity(intent)
         }
 
-
-
-
     }
     override fun onResume() {
         super.onResume()
         adapter.notifyItemInserted(taskDaoManager.getItems().size-1)
     }
-
 
     private fun setUpAdapter(){
         recycler = findViewById(R.id.listOfTasks)
@@ -62,6 +58,12 @@ class MainActivity : AppCompatActivity(), OnClickTaskAdapter {
     override fun onClickSubmitCheckBox(task: Task, positionOfTask: Int) {
         taskDaoManager.removeTask(task)
         adapter.notifyItemRemoved(positionOfTask)
+    }
+
+    override fun onClickEditButton(id: Int) {
+        val intent: Intent = Intent(this, EditTaskActivity::class.java)
+        intent.putExtra("taskId", id)
+        startActivity(intent)
     }
 
 
