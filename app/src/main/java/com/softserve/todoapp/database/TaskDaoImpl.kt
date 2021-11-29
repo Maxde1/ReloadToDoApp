@@ -1,6 +1,7 @@
 package com.softserve.todoapp.database
 
 import com.softserve.todoapp.model.Task
+import java.lang.Exception
 
 class TaskDaoImpl: TaskDao {
     companion object{
@@ -12,7 +13,12 @@ class TaskDaoImpl: TaskDao {
     }
 
     override fun getItem(id: Int): Task {
-        return listOfTasks[id]
+        for (i in listOfTasks){
+            if (i.id == id){
+                return i
+            }
+        }
+        throw Exception("Item not found")
     }
 
     override fun insertTask(task: Task) {

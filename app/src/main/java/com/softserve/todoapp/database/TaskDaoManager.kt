@@ -1,33 +1,45 @@
 package com.softserve.todoapp.database
 
-import android.util.Log
 import com.softserve.todoapp.model.Task
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 
 class TaskDaoManager {
     private val  taskDao = TaskDaoImpl()
+    fun getTaskById(id: Int): Task{
+        return taskDao.getItem(id)
+    }
     fun removeTask(task: Task){
         taskDao.delete(task)
     }
     fun getItems(): List<Task>{
         return taskDao.getItems()
     }
-    fun addTask(title: String, taskContent: String, priority: String, currentDate: Date){
-        taskDao.insertTask(createTask(title, taskContent, priority, currentDate))
+    fun updateTask(title: String, taskContent: String, priority: String, editedTask: Task){
+        taskDao.update(createUpdatedTask(title, taskContent, priority, editedTask))
     }
+    fun addTask(title: String, taskContent: String, priority: String, currentDate: Date){
+        taskDao.insertTask(createNewTask(title, taskContent, priority, currentDate))
+    }
+    //Fix this
     private fun formatDate(currentDate: Date): String{
         val formatter = SimpleDateFormat("MMM dd yyyy")
         return formatter.format(currentDate)
     }
-    private fun createTask(title: String, taskContent: String, priority: String, currentDate: Date): Task{
+    private fun createNewTask(title: String, taskContent: String, priority: String, currentDate: Date): Task{
         return Task(
             title = title,
             task = taskContent,
             priority = getPriority(priority),
             dateCreation = formatDate(currentDate)
         )
+    }
+
+    private fun createUpdatedTask(title: String, taskContent: String, priority: String, editedTask: Task):Task{
+        editedTask.title = title
+        editedTask.task = taskContent
+        editedTask.priority = getPriority(priority)
+        return editedTask
     }
     private fun getPriority(priority: String): Int{
         return when(priority){

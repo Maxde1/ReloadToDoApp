@@ -1,6 +1,7 @@
 package com.softserve.todoapp.adapter
 
 import android.app.Application
+import android.content.Intent
 import android.graphics.Typeface.create
 import android.graphics.drawable.Drawable
 import android.util.Log
@@ -14,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.softserve.todoapp.R
+import com.softserve.todoapp.activity.NewTaskActivity
 import com.softserve.todoapp.model.Task
 import org.w3c.dom.Text
 import java.util.zip.Inflater
@@ -27,12 +29,14 @@ class TaskListAdapter(private var taskList: List<Task>, private var onClickTask:
         var dateCreation: TextView ?= null
         var submitCheckBox: CheckBox ?= null
         var priorityColor: AppCompatImageView ?= null
+        var editButton: AppCompatImageView ?= null
                 init {
                     title = view.findViewById(R.id.title_content)
                     task = view.findViewById(R.id.task_content)
                     dateCreation = view.findViewById(R.id.date_creation)
                     submitCheckBox = view.findViewById(R.id.submit_check_box)
                     priorityColor = view.findViewById(R.id.priority_color)
+                    editButton = view.findViewById(R.id.edit_button)
                 }
     }
 
@@ -54,16 +58,18 @@ class TaskListAdapter(private var taskList: List<Task>, private var onClickTask:
                 else -> R.color.red
             }
         )
-
         holder.submitCheckBox?.setOnClickListener {
             onClickTask.onClickSubmitCheckBox(taskListItem, position)
         }
-
-
+        holder.editButton?.setOnClickListener{
+            Log.e("TaskAdapter", taskListItem.id.toString())
+            onClickTask.onClickEditButton(taskListItem.id)
+        }
     }
 
     override fun getItemCount(): Int {
         return taskList.size
     }
+
 
 }
