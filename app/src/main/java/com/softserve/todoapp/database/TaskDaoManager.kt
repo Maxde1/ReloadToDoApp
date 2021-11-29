@@ -21,7 +21,8 @@ class TaskDaoManager {
     fun addTask(title: String, taskContent: String, priority: String, currentDate: Date){
         taskDao.insertTask(createNewTask(title, taskContent, priority, currentDate))
     }
-    //Fix this
+    //Fix this. It should be in TaskListAdapter when you
+    // display this info in database you should save only data
     private fun formatDate(currentDate: Date): String{
         val formatter = SimpleDateFormat("MMM dd yyyy")
         return formatter.format(currentDate)

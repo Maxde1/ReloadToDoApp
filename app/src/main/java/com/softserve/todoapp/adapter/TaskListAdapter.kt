@@ -49,7 +49,7 @@ class TaskListAdapter(private var taskList: List<Task>, private var onClickTask:
     override fun onBindViewHolder(holder: TaskListAdapter.TaskHolder, position: Int) {
         val taskListItem = taskList[position]
         holder.title?.text = taskListItem.title
-        holder.task?.text = taskListItem.task
+        holder.task?.text = formatViewOfTask(taskListItem.task)
         holder.dateCreation?.text = taskListItem.dateCreation
         holder.priorityColor?.setBackgroundResource (
             when(taskListItem.priority){
@@ -62,13 +62,19 @@ class TaskListAdapter(private var taskList: List<Task>, private var onClickTask:
             onClickTask.onClickSubmitCheckBox(taskListItem, position)
         }
         holder.editButton?.setOnClickListener{
-            Log.e("TaskAdapter", taskListItem.id.toString())
             onClickTask.onClickEditButton(taskListItem.id)
         }
     }
 
     override fun getItemCount(): Int {
         return taskList.size
+    }
+    private fun formatViewOfTask(taskText: String): String{
+        //Add three dots if string has more that 35 symbols
+        if (taskText.length >= 35){
+            return taskText.substring(0, 35)+"..."
+        }
+        return taskText
     }
 
 
