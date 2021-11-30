@@ -25,6 +25,7 @@ class NewTaskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_task)
+        supportActionBar?.hide()
         // Create spinner
         val spinner: Spinner = findViewById(R.id.priority_spinner)
         createSpinner(spinner)

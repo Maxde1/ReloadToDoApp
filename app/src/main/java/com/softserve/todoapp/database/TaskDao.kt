@@ -14,4 +14,6 @@ interface TaskDao {
 
     fun delete(task: Task)
 
+    fun getCompletedItems(): List<Task>
+
 }

@@ -6,6 +6,11 @@ import java.util.*
 
 class TaskDaoManager {
     private val  taskDao = TaskDaoImpl()
+
+    fun getCompletedTasks():List<Task>{
+        return taskDao.getCompletedItems()
+    }
+
     fun getTaskById(id: Int): Task{
         return taskDao.getItem(id)
     }

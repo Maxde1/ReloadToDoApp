@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.tabs.TabItem
 import com.softserve.todoapp.R
 import com.softserve.todoapp.adapter.OnClickTaskAdapter
 import com.softserve.todoapp.adapter.TaskListAdapter
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), OnClickTaskAdapter {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.hide()
 
         setUpAdapter()
 
@@ -40,6 +42,11 @@ class MainActivity : AppCompatActivity(), OnClickTaskAdapter {
             val intent= Intent(this, NewTaskActivity::class.java)
             startActivity(intent)
         }
+        //Tabs button
+//        val tabButton: TabItem = findViewById(R.id.completed_tasks_main)
+//        tabButton.setOnClickListener{
+//            goToCompletedTaskActivity()
+//        }
 
     }
     override fun onResume() {
@@ -63,6 +70,10 @@ class MainActivity : AppCompatActivity(), OnClickTaskAdapter {
     override fun onClickEditButton(id: Int) {
         val intent: Intent = Intent(this, EditTaskActivity::class.java)
         intent.putExtra("taskId", id)
+        startActivity(intent)
+    }
+    private fun goToCompletedTaskActivity(){
+        val intent: Intent = Intent(this, CompletedTask::class.java)
         startActivity(intent)
     }
 

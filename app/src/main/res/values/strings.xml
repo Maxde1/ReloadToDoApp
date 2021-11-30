@@ -9,6 +9,8 @@
     <string name="task_filed">Task:</string>
     <string name="priority">Priority</string>
     <string name="edit_task">Edit task</string>
+    <string name="in_progress_tab">In progress</string>
+    <string name="completed_tab">Completed</string>
     <string-array name="priority_array">
         <item>Low</item>
         <item>Medium</item>

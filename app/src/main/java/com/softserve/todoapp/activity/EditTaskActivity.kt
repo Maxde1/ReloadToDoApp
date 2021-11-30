@@ -22,6 +22,7 @@ class EditTaskActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activoty_edit_task)
+        supportActionBar?.hide()
         //
         val spinner: Spinner = findViewById(R.id.priority_spinner_edit)
         createSpinner(spinner)

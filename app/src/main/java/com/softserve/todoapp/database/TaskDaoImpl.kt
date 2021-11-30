@@ -6,6 +6,7 @@ import java.lang.Exception
 class TaskDaoImpl: TaskDao {
     companion object{
         var listOfTasks: MutableList<Task> = mutableListOf()
+        var listOfCompletedTask: MutableList<Task> = mutableListOf()
     }
 
     override fun getItems(): List<Task> {
@@ -31,5 +32,9 @@ class TaskDaoImpl: TaskDao {
 
     override fun delete(task: Task) {
         listOfTasks.remove(task)
+    }
+
+    override fun getCompletedItems(): List<Task> {
+        return listOfCompletedTask
     }
 }
