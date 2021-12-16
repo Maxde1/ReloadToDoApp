@@ -23,25 +23,32 @@ class TaskDaoManager {
     fun updateTask(title: String, taskContent: String, priority: String, editedTask: Task){
         taskDao.update(createUpdatedTask(title, taskContent, priority, editedTask))
     }
+    fun updateTask(task: Task){
+        taskDao.update(task)
+    }
+
     fun addTask(title: String, taskContent: String, priority: String, currentDate: Date){
         taskDao.insertTask(createNewTask(title, taskContent, priority, currentDate))
     }
     //Fix this. It should be in TaskListAdapter when you
     // display this info in database you should save only data
-    private fun formatDate(currentDate: Date): String{
-        val formatter = SimpleDateFormat("MMM dd yyyy")
-        return formatter.format(currentDate)
-    }
-    private fun createNewTask(title: String, taskContent: String, priority: String, currentDate: Date): Task{
+
+    private fun createNewTask(title: String,
+                              taskContent: String,
+                              priority: String,
+                              currentDate: Date): Task{
         return Task(
             title = title,
             task = taskContent,
             priority = getPriority(priority),
-            dateCreation = formatDate(currentDate)
+            dateCreation = currentDate
         )
     }
 
-    private fun createUpdatedTask(title: String, taskContent: String, priority: String, editedTask: Task):Task{
+    private fun createUpdatedTask(title: String,
+                                  taskContent: String,
+                                  priority: String,
+                                  editedTask: Task):Task{
         editedTask.title = title
         editedTask.task = taskContent
         editedTask.priority = getPriority(priority)
@@ -54,8 +61,8 @@ class TaskDaoManager {
             else -> 1
         }
     }
+
     fun isValidTask(title: String, taskContent: String): Boolean{
         return title.isNotBlank() && taskContent.isNotBlank()
     }
-
 }

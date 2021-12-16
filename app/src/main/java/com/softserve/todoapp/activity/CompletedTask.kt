@@ -37,11 +37,20 @@ class CompletedTask: AppCompatActivity(), OnClickTaskAdapter {
         val intent: Intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
+
+    override fun onClickDeleteButton(task: Task, positionOfTask: Int) {
+        TODO("Not yet implemented")
+    }
+
     override fun onClickSubmitCheckBox(task: Task, positionOfTask: Int) {
         TODO("Not yet implemented")
     }
 
     override fun onClickEditButton(id: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClickTaskField(task: String, title: String) {
         TODO("Not yet implemented")
     }
 }
